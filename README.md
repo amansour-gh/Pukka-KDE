@@ -223,5 +223,3 @@ The goal is a polished terminal experience without turning the entire desktop in
 This project is provided as-is for personal and organizational use.
 
 You are free to modify the configuration to suit your needs.
-
-Test commit from Kate
