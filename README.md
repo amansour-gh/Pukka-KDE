@@ -57,7 +57,7 @@ The installer handles the required packages automatically.
 Clone the repository:
 
 ```bash
-git clone https://github.com/USERNAME/Pukka-KDE.git
+git clone https://github.com/amansour-gh/Pukka-KDE.git
 ```
 
 Enter the directory:
@@ -178,7 +178,7 @@ The same repository can be used on multiple Fedora KDE computers.
 For each machine:
 
 ```bash
-git clone https://github.com/USERNAME/Pukka-KDE.git
+git clone https://github.com/amansour-gh/Pukka-KDE.git
 cd Pukka-KDE
 ./install.sh
 ```
