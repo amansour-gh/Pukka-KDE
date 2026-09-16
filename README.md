@@ -27,6 +27,9 @@ The goal is to keep the terminal experience consistent across multiple Fedora KD
 ```text
 Pukka-KDE/
 ├── install.sh
+├── verify.sh
+├── MANUAL_INSTALL.md
+├── TROUBLESHOOTING.md
 ├── README.md
 ├── .gitignore
 ├── fastfetch/
@@ -74,7 +77,7 @@ Run the installer:
 
 The installer will:
 
-1. Install required Fedora packages.
+1. Install the required Fedora packages.
 2. Install Starship if it is not already installed.
 3. Install JetBrains Mono Nerd Font if it is not already installed.
 4. Back up the existing `.zshrc`.
@@ -83,6 +86,44 @@ The installer will:
 7. Set the Pukka-KDE Konsole profile as the default profile.
 
 After installation, close all Konsole windows and open Konsole again.
+
+### Verify the Installation
+
+Run:
+
+```bash
+./verify.sh
+```
+
+The verification script checks the installed commands, login shell, font, and Pukka-KDE configuration files.
+
+A successful verification should report all checks as `PASS` and finish with exit code `0`.
+
+### Manual Installation
+
+To install the configuration manually instead of using the automated installer, see:
+
+[MANUAL_INSTALL.md](MANUAL_INSTALL.md)
+
+### Troubleshooting
+
+For common installation and configuration problems, see:
+
+[TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+
+````
+
+بعد لصق هذا الجزء في `README.md` وحفظه، نفّذ:
+
+```bash
+cd /mnt/Data/github/"KDE terminal profile"
+
+git diff -- README.md
+git diff --check
+git status --short
+````
+
+وبعدها نراجع الـ diff مرة واحدة قبل الـ commit.
 
 ## What Gets Installed
 
