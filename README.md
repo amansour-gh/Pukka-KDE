@@ -111,20 +111,6 @@ For common installation and configuration problems, see:
 
 [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
 
-````
-
-بعد لصق هذا الجزء في `README.md` وحفظه، نفّذ:
-
-```bash
-cd /mnt/Data/github/"KDE terminal profile"
-
-git diff -- README.md
-git diff --check
-git status --short
-````
-
-وبعدها نراجع الـ diff مرة واحدة قبل الـ commit.
-
 ## What Gets Installed
 
 ### Zsh
@@ -160,20 +146,7 @@ Git information is intentionally kept secondary because the terminal is not prim
 
 Fastfetch displays a compact system summary when a new interactive terminal starts.
 
-Example:
-
-```text
-OS: Fedora Linux 44 (KDE Plasma Desktop Edition) x86_64
-Host: Inspiron 3593
-Kernel: Linux 7.2.5-200.fc44.x86_64
-DE: KDE Plasma
-WM: KWin (Wayland)
-Shell: zsh
-Terminal: konsole
-CPU: Intel Core i5
-GPU: NVIDIA + Intel
-Memory: ...
-```
+![Pukka-KDE Fastfetch](docs/images/fastfetch.png)
 
 ### Konsole
 
