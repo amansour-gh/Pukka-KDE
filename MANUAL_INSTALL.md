@@ -26,7 +26,8 @@ sudo dnf install -y \
     zsh-autosuggestions \
     zsh-syntax-highlighting \
     curl \
-    unzip
+    unzip \
+    konsole
 ```
 
 ## Install Starship
@@ -95,11 +96,13 @@ mkdir -p \
     "$HOME/.local/share/konsole"
 ```
 
-Before replacing an existing `~/.zshrc`, create a backup:
+Before replacing an existing `~/.zshrc`, create a backup if the file exists:
 
 ```bash
-cp "$HOME/.zshrc" \
-    "$HOME/.zshrc.pukka-backup-$(date +%Y%m%d-%H%M%S)"
+if [ -f "$HOME/.zshrc" ]; then
+    cp "$HOME/.zshrc" \
+        "$HOME/.zshrc.pukka-backup-$(date +%Y%m%d-%H%M%S)"
+fi
 ```
 
 Then copy the Pukka-KDE configuration files:

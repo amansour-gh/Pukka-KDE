@@ -34,6 +34,27 @@ Run the verification script again:
 ./verify.sh
 ```
 
+## Zsh Dependencies Are Missing
+
+Check the required files:
+
+```bash
+ls -l /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ls -l /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+```
+
+If either file is missing, reinstall the packages:
+
+```bash
+sudo dnf install -y zsh-autosuggestions zsh-syntax-highlighting
+```
+
+Run the verification script again:
+
+```bash
+./verify.sh
+```
+
 ## Zsh Is Not the Login Shell
 
 Check the configured login shell:
@@ -283,7 +304,8 @@ sudo dnf install -y \
     zsh-autosuggestions \
     zsh-syntax-highlighting \
     curl \
-    unzip
+    unzip \
+    konsole
 ```
 
 If `dnf` reports a package or repository problem, resolve that Fedora package-management issue first and run the installer again.

@@ -9,6 +9,22 @@ echo "       Pukka-KDE Installer"
 echo "================================"
 echo
 
+# Check operating system
+if [ ! -f /etc/os-release ]; then
+    echo "ERROR: Cannot determine the operating system."
+    exit 1
+fi
+
+. /etc/os-release
+
+if [ "${ID:-}" != "fedora" ]; then
+    echo "ERROR: Pukka-KDE is designed for Fedora Linux."
+    exit 1
+fi
+
+echo "Fedora detected."
+echo
+
 echo "[1/7] Installing Fedora packages..."
 
 sudo dnf install -y \
@@ -17,7 +33,8 @@ sudo dnf install -y \
     zsh-autosuggestions \
     zsh-syntax-highlighting \
     curl \
-    unzip
+    unzip \
+    konsole
 
 echo
 echo "[2/7] Installing Starship..."
@@ -32,23 +49,22 @@ echo
 echo "[3/7] Installing JetBrains Mono Nerd Font..."
 
 FONT_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/fonts/JetBrainsMono"
+FONT_ARCHIVE="/tmp/JetBrainsMono.zip"
 
-if fc-list : family | grep -F "JetBrainsMono Nerd Font" >/dev/null; then
-
+if fc-list : family | grep -F "JetBrainsMono Nerd Font" >/dev/null 2>&1; then
     echo "JetBrains Mono Nerd Font already installed."
-
 else
     mkdir -p "$FONT_DIR"
 
     curl -L \
         https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip \
-        -o /tmp/JetBrainsMono.zip
+        -o "$FONT_ARCHIVE"
 
-    unzip -q /tmp/JetBrainsMono.zip -d "$FONT_DIR"
+    unzip -q "$FONT_ARCHIVE" -d "$FONT_DIR"
 
     fc-cache -f
 
-    rm -f /tmp/JetBrainsMono.zip
+    rm -f "$FONT_ARCHIVE"
 fi
 
 echo
@@ -90,9 +106,16 @@ cp "$SCRIPT_DIR/konsole/Pukka-KDE.colorscheme" \
 echo
 echo "[6/7] Setting Zsh as login shell..."
 
-ZSH_PATH="$(command -v zsh)"
+ZSH_PATH="$(command -v zsh || true)"
 
-if [ "$SHELL" != "$ZSH_PATH" ]; then
+if [ -z "$ZSH_PATH" ]; then
+    echo "ERROR: Zsh was not found after installation."
+    exit 1
+fi
+
+CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
+
+if [ "$CURRENT_SHELL" != "$ZSH_PATH" ]; then
     chsh -s "$ZSH_PATH"
 else
     echo "Zsh is already the login shell."

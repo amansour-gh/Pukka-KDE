@@ -32,6 +32,7 @@ Pukka-KDE/
 ├── TROUBLESHOOTING.md
 ├── README.md
 ├── .gitignore
+├── .editorconfig
 ├── fastfetch/
 │   └── config.jsonc
 ├── konsole/
@@ -95,7 +96,7 @@ Run:
 ./verify.sh
 ```
 
-The verification script checks the installed commands, login shell, font, and Pukka-KDE configuration files.
+The verification script checks installed commands, Zsh dependencies, the configured login shell, the font, Pukka-KDE configuration files, and the Konsole profile configuration.
 
 A successful verification should report all checks as `PASS` and finish with exit code `0`.
 
@@ -234,6 +235,4 @@ The goal is a polished terminal experience without turning the entire desktop in
 
 ## License
 
-This project is provided as-is for personal and organizational use.
-
-You are free to modify the configuration to suit your needs.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
